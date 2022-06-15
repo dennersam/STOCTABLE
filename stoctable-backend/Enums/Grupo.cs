@@ -1,8 +1,8 @@
-﻿namespace stoctable_backend.Models
+﻿namespace stoctable_backend.Enums
 {
     public enum Grupo
     {
-        ADMIN,
+        ADMINISTRADOR,
         VENDEDOR,
         CAIXA,
         FINANCEIRO

@@ -1,6 +1,6 @@
 ﻿namespace stoctable_backend.Models
 {
-    public class Fornecedores : Pessoa
+    public class Fornecedores : Pessoas
     {
         public int Id { get; set; }
         public string CNPJ { get; set; }

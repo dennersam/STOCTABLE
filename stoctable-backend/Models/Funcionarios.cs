@@ -1,6 +1,6 @@
 ﻿namespace stoctable_backend.Models
 {
-    public class Funcionarios
+    public class Funcionarios : Pessoas
     {
         public int Id { get; set; }
         public string Codigo { get; set; }
