@@ -1,26 +1,29 @@
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from 'src/material.modules';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { SidemenuComponent } from './shared/layout/sidemenu/sidemenu.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SidemenuComponent
+
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule
+    MaterialModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: "pt"}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
