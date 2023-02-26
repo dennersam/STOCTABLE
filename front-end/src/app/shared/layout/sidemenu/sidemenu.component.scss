@@ -1,0 +1,83 @@
+.sidenav-container {
+  width: auto;
+  height: 100%;
+  //border: 1px solid #4527a0;
+}
+
+.sidenav{
+  width: 15em;
+  padding: 15px;
+  background-color: #4527a0;
+}
+
+.container-logo{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+#logo{
+  height: 35px;
+  width: 35px;
+}
+
+.text-logo{
+  font-family: 'Bebas Neue', cursive;
+  color: aliceblue;
+  //text-align: center;
+  font-size: 40px;
+  margin: 0 0 0 10px;
+}
+
+.menu-button{
+  background-color: #512DA8;
+  color: white;
+  border: none;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+.sidenav-menu{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: calc(80% - 3.65rem);
+  cursor: pointer;
+  margin-top: 40px;
+  padding: 0;
+
+  .sidenav-item{
+    width: 100%;
+    margin-bottom: 0.625rem;
+
+    .sidenav-link{
+      text-decoration: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      border-radius: 0.5rem;
+      height: 3em;
+
+      .sidenave-link-icon{
+        font-size: 20px;
+        margin: 0 20px 0 10px;
+
+      }
+
+      .sidenav-link-text{
+        font-size: 20px;
+      }
+    }
+  }
+  .sidenav-item:hover{
+    .sidenav-link{
+      background-color:#362069;
+
+
+    }
+
+  }
+}

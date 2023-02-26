@@ -1,0 +1,19 @@
+.title-dashboard{
+  margin: 20px;
+  font-weight: bolder;
+  color: rgb(93, 45, 138);
+}
+
+.card-status {
+  margin-left: 40px;
+  max-width: 150px;
+  margin-bottom: 8px;
+  background-color: #4527a0;
+  color: white;
+  //color: rgb(93, 45, 138);
+}
+
+.dash-topo{
+  display: flex;
+  flex-direction: row;
+}

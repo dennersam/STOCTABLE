@@ -1,0 +1,109 @@
+<div>
+  <h1>Cadastrar Produto</h1>
+  <p>Insira as informações corretamente abaixo, verifique as mensagens nos campos para ajuda.</p>
+</div>
+<div>
+  <form [formGroup]="produtoForm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <input formControlName="descricao" matInput placeholder="Descrição do produto">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fabricante</mat-label>
+      <input formControlName="fabricante" matInput placeholder="Fabricante do produto">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Unidade</mat-label>
+      <mat-select formControlName="unidade">
+        <mat-option value="un">un</mat-option>
+        <mat-option value="pc">pc</mat-option>
+        <mat-option value="kg">kg</mat-option>
+        <mat-option value="cx">cx</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Setor</mat-label>
+      <input formControlName="setor" matInput placeholder="Setor">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Fornecedor</mat-label>
+      <mat-select formControlName="fornecedor">
+        <mat-option value="Zoneta Importadores">Zoneta Importadores</mat-option>
+        <mat-option value="Matena Motos e Acessorios">Matena Motos e Acessorios</mat-option>
+        <mat-option value="Minas Center Moto Peças">Minas Center Moto Peças</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço de Custo</mat-label>
+      <input formControlName="precoCusto" type="number" matInput placeholder="Preço de custo">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço de Venda</mat-label>
+      <input formControlName="precoVenda" type="number" matInput placeholder="Preço de venda">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Preço Médio</mat-label>
+      <input formControlName="precoMedio" type="number" matInput placeholder="Preço médio">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Margem de Lucro</mat-label>
+      <input formControlName="margemLucro" type="number" matInput placeholder="Margem de lucro">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Quantidade</mat-label>
+      <input formControlName="quantidade" type="number" matInput placeholder="Quantidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Qt Mínima</mat-label>
+      <input formControlName="qtMinima" type="number" matInput placeholder="Qt Mínima">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Alicota ICMS</mat-label>
+      <input formControlName="AlicotaICMS" type="number" matInput placeholder="Alicota ICMS">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Base Calculo ICMS</mat-label>
+      <input formControlName="baseCalcICMS" type="number" matInput placeholder="Base Calc ICMS">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Peso Bruto</mat-label>
+      <input formControlName="pesoBruto" type="number" matInput placeholder="Peso Bruto">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Peso Líquido</mat-label>
+      <input formControlName="pesoLiquido" type="number" matInput placeholder="Peso Líquido">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cód. Interno</mat-label>
+      <input formControlName="codigoInterno" matInput placeholder="Cod. Interno">
+    </mat-form-field>
+    <div>
+      <mat-form-field appearance="outline" class="texto-obs">
+        <mat-label>Observação</mat-label>
+        <textarea formControlName="observacao" matInput placeholder="Observação"></textarea>
+      </mat-form-field>
+    </div>
+    <div class="container">
+      <button mat-raised-button
+        class="stoc-btn-green" (click)="adicionarProduto()">Salvar</button>
+      <button mat-raised-button color="warn">Cancelar</button>
+    </div>
+  </form>
+
+</div>

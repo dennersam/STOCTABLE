@@ -1,0 +1,37 @@
+<mat-drawer-container class="sidenav-container">
+  <mat-drawer mode="side" [(opened)]="opened" class="sidenav" >
+    <div class="container-logo">
+      <img src="../../../../assets/img/png/Logo_stoctable.png" id="logo" >
+      <p class="text-logo">STOCTABLE</p>
+    </div>
+
+    <!-- <mat-list-item>
+      <img src="../../../../assets/img/png/Logo_stoctable.png" id="logo" >
+      <span class="text-logo">STOCTABLE</span>
+    </mat-list-item> -->
+
+    <ul class="sidenav-menu">
+      <li class="sidenav-item" *ngFor="let menu of menuList">
+        <a class="sidenav-link" [routerLink]="menu.routeLink" >
+          <i class="sidenave-link-icon" [class]="menu.icon"></i>
+          <span class="sidenav-link-text">{{ menu.label }}</span>
+        </a>
+      </li>
+    </ul>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <mat-toolbar color="accent">
+      <button mat-icon-button class="menu-button" (click)="menuBehaivor()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+      <span>Olá, Denner</span>
+
+    </mat-toolbar>
+
+    <!-- Conteudo -->
+    <router-outlet></router-outlet>
+
+  </mat-drawer-content>
+</mat-drawer-container>
