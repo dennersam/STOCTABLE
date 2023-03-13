@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EstoqueComponent } from '../estoque/estoque.component';
 
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from './../model/produto';
@@ -50,4 +51,8 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   removerProduto() {}
+
+  cancelarCadastro(){
+
+  }
 }

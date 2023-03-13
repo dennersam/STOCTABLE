@@ -8,12 +8,14 @@ import { MaterialModule } from 'src/material.modules';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidemenuComponent } from './shared/layout/sidemenu/sidemenu.component';
+import { SideNavComponent } from './shared/layout/side-nav/side-nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidemenuComponent
+    SidemenuComponent,
+    SideNavComponent
 
   ],
   imports: [

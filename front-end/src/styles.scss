@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
 @import '@angular/material/theming';
 @include mat-core();
@@ -17,7 +18,7 @@ $custom-theme: mat-light-theme(
 @include angular-material-theme($custom-theme);
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;}
+body { margin: 0; font-family: 'Roboto', sans-serif;}
 
 .stoc-btn-green{
   background-color: rgb(104, 174, 0);

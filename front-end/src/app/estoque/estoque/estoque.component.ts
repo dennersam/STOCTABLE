@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -88,9 +88,13 @@ export class EstoqueComponent implements OnInit {
 
   addProduto(): void {
     const dialogRef = this.dialog.open(ProdutoFormComponent, {
-      height: '80%',
-      width: '50%',
+      height: '90%',
+      width: '80%',
     });
+  }
+
+  @Output() closeDialog(){
+    this.dialog.closeAll();
   }
 
   delProduto(): void {}

@@ -101,8 +101,11 @@
     </div>
     <div class="container">
       <button mat-raised-button
-        class="stoc-btn-green" (click)="adicionarProduto()">Salvar</button>
-      <button mat-raised-button color="warn">Cancelar</button>
+        class="stoc-btn-green"
+        (click)="adicionarProduto()">Salvar</button>
+      <button mat-raised-button
+        color="warn"
+        mat-dialog-close>Cancelar</button>
     </div>
   </form>
 

@@ -7,7 +7,7 @@
 .sidenav{
   width: 15em;
   padding: 15px;
-  background-color: #4527a0;
+  background-color: #231345;
 }
 
 .container-logo{
@@ -80,4 +80,8 @@
     }
 
   }
+}
+
+.closed{
+  min-width: 5rem;
 }

@@ -1,5 +1,5 @@
 <mat-drawer-container class="sidenav-container">
-  <mat-drawer mode="side" [(opened)]="opened" class="sidenav" >
+  <mat-drawer mode="side" [(opened)]="opened" class="sidenav" ngClass="opened ? 'opened' : 'closed'">
     <div class="container-logo">
       <img src="../../../../assets/img/png/Logo_stoctable.png" id="logo" >
       <p class="text-logo">STOCTABLE</p>
