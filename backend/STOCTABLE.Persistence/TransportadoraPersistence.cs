@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence
 {
-    internal class TransportadoraPersistence : ITransportadoraPersistence
+    public class TransportadoraPersistence : ITransportadoraPersistence
     {
         public StoctableContext _context { get; }
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence.Interfaces
 {
-    internal interface IClientePFPersistence
+    public interface IClientePFPersistence
     {
         Task<ClientePF> GetClientesPFByIdAsync(int id);
         Task<ClientePF[]> GetAllClientesPFAsync();

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence.Interfaces
 {
-    internal interface IClientePJPersistence
+    public interface IClientePJPersistence
     {
         Task<ClientePJ> GetClientesPJByIdAsync(int id);
         Task<ClientePJ[]> GetAllClientesPJAsync();

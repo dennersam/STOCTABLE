@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence.Interfaces
 {
-    internal interface ITransportadoraPersistence
+    public interface ITransportadoraPersistence
     {
         Task<Transportadora> GetTransportadoraByIdAsync(int id);
         Task<Transportadora[]> GetAllTransportadorasAsync();

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence
 {
-    internal class GeneralPersistence : IGeneralPersistence
+    public class GeneralPersistence : IGeneralPersistence
     {
         public StoctableContext _context { get; }
 

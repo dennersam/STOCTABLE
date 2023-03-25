@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence.Interfaces
 {
-    internal interface IGeneralPersistence
+    public interface IGeneralPersistence
     {
         void Add<T>(T entity) where T : class;
         void Update<T>(T entity) where T : class;

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using STOCTABLE.Persistence.Context;
 using STOCTABLE.Domain.Models;
+using STOCTABLE.Application.Interfaces;
 
 namespace STOCTABLE.Controllers
 {
@@ -10,119 +11,114 @@ namespace STOCTABLE.Controllers
     [ApiController]
     public class ProdutoController : ControllerBase
     {
-        private readonly StoctableContext _context;
 
-        public ProdutoController(StoctableContext context)
+        private readonly IProdutoService _produtoService;
+
+        public ProdutoController(IProdutoService produtoService)
         {
-            _context = context;
-
+            _produtoService = produtoService;
         }
 
         // GET: api/Produtos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> GetProdutos()
+        public async Task<IActionResult> GetProdutos()
         {
-            if (_context.Produtos == null)
+            try
             {
-                return NotFound();
-            }
-            else
-            {
-                var produtos = await _context.Produtos.ToListAsync();
-            }
-            
+                var produtos = await _produtoService.GetAllProdutosAsync();
+                if (produtos == null) return NotFound("Nenhum produto encontrado.");
 
-            
-            return await _context.Produtos.ToListAsync();
+                return Ok(produtos);
+            }
+            catch(Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar o produto. Detalhes: {ex}");
+            }
         }
 
         // GET: api/Produtos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Produto>> GetProdutoById(int id)
+        public async Task<IActionResult> GetProdutoById(int id)
         {
-            if (_context.Produtos == null)
+            try
             {
-                return NotFound();
-            }
-            var produtos = await _context.Produtos.FindAsync(id);
+                var produto = await _produtoService.GetProdutosByIdAsync(id);
+                if (produto == null) return NotFound("Nenhum produto com o Id informado foi encontrado.");
 
-            if (produtos == null)
+                return Ok(produto);
+            }
+            catch (Exception ex)
             {
-                return NotFound();
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar o produto. Detalhes: {ex}");
             }
+        }
 
-            return produtos;
+        [HttpGet("descricao/{descricao}")]
+        public async Task<IActionResult> GetProdutoByDescricao(string descricao)
+        {
+            try
+            {
+                var produto = await _produtoService.GetAllProdutosByDescriptionAsync(descricao);
+                if (produto == null) return NotFound("Nenhum resultado para a descrição do produto encontrado.");
+
+                return Ok(produto);
+            }
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar o produto. Detalhes: {ex}");
+            }
         }
 
         // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduto(int id, Produto produtos)
+        public async Task<IActionResult> PutProduto(int id, Produto model)
         {
-            if (id != produtos.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(produtos).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                var produto = await _produtoService.UpdateProduto(id, model);
+                if (produto == null) return BadRequest("Erro ao tentar adicionar o produto");
+                return Ok(produto);
             }
-            catch (DbUpdateConcurrencyException)
+            catch (Exception ex)
             {
-                if (!ProdutosExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar recuperar o produto. Detalhes: {ex}");
             }
-
-            return NoContent();
         }
 
         // POST: api/Produtos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Produto>> PostProduto(Produto produto)
+        public async Task<IActionResult> PostProduto(Produto model)
         {
-            if (_context.Produtos == null)
+            try
             {
-                return Problem("Entity set 'StoctableContext.Produtos' is null.");
+                var produto = await _produtoService.AddProduto(model);
+                if (produto == null) return BadRequest("Erro ao tentar adicionar o produto");
+                return Ok(produto);
             }
-            _context.Produtos.Add(produto);
-            await _context.SaveChangesAsync();
+            catch (Exception ex)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar adicionar o produto. Detalhes: {ex}");
+            }
 
-            return CreatedAtAction("GetProdutos", new { id = produto.Id }, produto);
         }
 
         // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {
-            if (_context.Produtos == null)
+            try
             {
-                return NotFound();
+                return await _produtoService.DeleteProduto(id) ? 
+                    Ok("O Produto foi removido!") :
+                    BadRequest("Não foi possível remover o produto.");
+                
             }
-            var produtos = await _context.Produtos.FindAsync(id);
-            if (produtos == null)
+            catch (Exception ex)
             {
-                return NotFound();
+                return this.StatusCode(StatusCodes.Status500InternalServerError, $"Erro ao tentar remover o produto. Detalhes: {ex}");
             }
-
-            _context.Produtos.Remove(produtos);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ProdutosExists(int id)
-        {
-            return (_context.Produtos?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

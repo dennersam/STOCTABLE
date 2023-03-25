@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using STOCTABLE.Domain.Enums;
 using STOCTABLE.Domain.Models;
 
 namespace STOCTABLE.Persistence.Context
@@ -18,6 +20,13 @@ namespace STOCTABLE.Persistence.Context
         public DbSet<ClientePF> ClientePFs { get;set; }
         public DbSet<ClientePJ> ClientePJs { get;set; }
         public DbSet<Transportadora> Transportadoras { get; set; }
+
+        public void Configuration(EntityTypeBuilder<Produto> builder)
+        {
+            builder.Property(u => u.Unidades).HasConversion(
+                u => u.ToString(),
+                u => (Unidade)Enum.Parse(typeof(Unidade), u));
+        }
 
     }
 }

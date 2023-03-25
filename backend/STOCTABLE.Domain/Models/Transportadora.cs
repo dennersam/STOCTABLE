@@ -3,7 +3,7 @@
     public class Transportadora : Pessoa
     {
         public int Id { get; set; }
-        public string CNPJ { get; set; }
-        public string InscricaoEstadual { get; set; }
+        public string? CNPJ { get; set; }
+        public string? InscricaoEstadual { get; set; }
     }
 }

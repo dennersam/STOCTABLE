@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence.Interfaces
 {
-    internal interface ICategoriaPersistence
+    public interface ICategoriaPersistence
     {
         Task<Categoria> GetCategoriaByIdAsync(int id);
         Task<Categoria[]> GetAllCategoriasPFAsync();

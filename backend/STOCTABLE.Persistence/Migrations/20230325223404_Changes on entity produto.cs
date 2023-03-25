@@ -6,10 +6,25 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace STOCTABLE.Persistence.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Changesonentityproduto : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Categorias",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Nome = table.Column<string>(type: "text", nullable: true),
+                    Descricao = table.Column<string>(type: "text", nullable: true),
+                    ProdutoId = table.Column<int>(type: "integer", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Categorias", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ClientePFs",
                 columns: table => new
@@ -17,9 +32,9 @@ namespace STOCTABLE.Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     CPF = table.Column<string>(type: "character varying(11)", maxLength: 11, nullable: false),
-                    Nascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    LimiteCredito = table.Column<decimal>(type: "numeric", nullable: false),
+                    Nascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    DataCadastro = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
+                    LimiteCredito = table.Column<decimal>(type: "numeric", nullable: true),
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Endereco = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Numero = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
@@ -45,10 +60,10 @@ namespace STOCTABLE.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Contato = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    Contato = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     CNPJ = table.Column<string>(type: "character varying(14)", maxLength: 14, nullable: false),
-                    InscricaoEstadual = table.Column<string>(type: "character varying(9)", maxLength: 9, nullable: false),
-                    DataCadastro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    InscricaoEstadual = table.Column<string>(type: "character varying(9)", maxLength: 9, nullable: true),
+                    DataCadastro = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Endereco = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Numero = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
@@ -74,7 +89,8 @@ namespace STOCTABLE.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nome = table.Column<string>(type: "text", nullable: false)
+                    Nome = table.Column<string>(type: "text", nullable: true),
+                    ProdutoId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -90,6 +106,7 @@ namespace STOCTABLE.Persistence.Migrations
                     CNPJ = table.Column<string>(type: "text", nullable: false),
                     InscricaoEstadual = table.Column<string>(type: "text", nullable: true),
                     RefBancarias = table.Column<string>(type: "text", nullable: true),
+                    ProdutoId = table.Column<int>(type: "integer", nullable: true),
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Endereco = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Numero = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
@@ -116,9 +133,9 @@ namespace STOCTABLE.Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     RG = table.Column<string>(type: "text", nullable: false),
-                    Ocupacao = table.Column<string>(type: "text", nullable: false),
-                    Salario = table.Column<double>(type: "double precision", nullable: false),
-                    Admissao = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Ocupacao = table.Column<string>(type: "text", nullable: true),
+                    Salario = table.Column<double>(type: "double precision", nullable: true),
+                    Admissao = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Endereco = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Numero = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
@@ -144,8 +161,8 @@ namespace STOCTABLE.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CNPJ = table.Column<string>(type: "text", nullable: false),
-                    InscricaoEstadual = table.Column<string>(type: "text", nullable: false),
+                    CNPJ = table.Column<string>(type: "text", nullable: true),
+                    InscricaoEstadual = table.Column<string>(type: "text", nullable: true),
                     Nome = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     Endereco = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     Numero = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: true),
@@ -172,25 +189,30 @@ namespace STOCTABLE.Persistence.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Descricao = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
-                    Unidade = table.Column<int>(type: "integer", maxLength: 50, nullable: true),
-                    FornecedorId = table.Column<int>(type: "integer", maxLength: 100, nullable: true),
-                    FabricanteId = table.Column<int>(type: "integer", maxLength: 300, nullable: true),
-                    Categoria = table.Column<string>(type: "text", nullable: true),
-                    PrecoCusto = table.Column<decimal>(type: "numeric", nullable: false),
+                    Unidades = table.Column<int>(type: "integer", nullable: false),
+                    PrecoCusto = table.Column<decimal>(type: "numeric", nullable: true),
                     PrecoVenda = table.Column<decimal>(type: "numeric", nullable: false),
                     MargemLucro = table.Column<decimal>(type: "numeric", nullable: true),
                     CustoMedio = table.Column<decimal>(type: "numeric", nullable: true),
-                    Quantidade = table.Column<int>(type: "integer", nullable: true),
+                    Quantidade = table.Column<int>(type: "integer", nullable: false),
                     QtMinima = table.Column<int>(type: "integer", nullable: true),
                     Observacao = table.Column<string>(type: "character varying(1000)", maxLength: 1000, nullable: true),
                     AlicotaICMS = table.Column<decimal>(type: "numeric", nullable: true),
                     BaseCalcICMS = table.Column<decimal>(type: "numeric", nullable: true),
                     PesoBruto = table.Column<decimal>(type: "numeric", nullable: true),
-                    PesoLiquido = table.Column<decimal>(type: "numeric", nullable: true)
+                    PesoLiquido = table.Column<decimal>(type: "numeric", nullable: true),
+                    FornecedorId = table.Column<int>(type: "integer", nullable: true),
+                    FabricanteId = table.Column<int>(type: "integer", nullable: true),
+                    CategoriaId = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Produtos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Produtos_Categorias_CategoriaId",
+                        column: x => x.CategoriaId,
+                        principalTable: "Categorias",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Produtos_Fabricantes_FabricanteId",
                         column: x => x.FabricanteId,
@@ -202,6 +224,11 @@ namespace STOCTABLE.Persistence.Migrations
                         principalTable: "Fornecedores",
                         principalColumn: "Id");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Produtos_CategoriaId",
+                table: "Produtos",
+                column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Produtos_FabricanteId",
@@ -230,6 +257,9 @@ namespace STOCTABLE.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Transportadoras");
+
+            migrationBuilder.DropTable(
+                name: "Categorias");
 
             migrationBuilder.DropTable(
                 name: "Fabricantes");

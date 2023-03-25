@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace STOCTABLE.Persistence
 {
-    internal class ProdutoPersistence : IProdutoPersistence
+    public class ProdutoPersistence : IProdutoPersistence
     {
         public StoctableContext _context { get; }
 
@@ -26,7 +26,7 @@ namespace STOCTABLE.Persistence
                 .Include(p => p.Fabricante)
                 .Include(p => p.Fornecedor);
 
-            query = query.OrderBy(p => p.Id).Where(p => p.Id == id);
+            query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Id == id);
             return await query.FirstOrDefaultAsync();
         }
 
@@ -37,18 +37,18 @@ namespace STOCTABLE.Persistence
                 .Include(p => p.Fabricante)
                 .Include(p => p.Fornecedor);
 
-            query = query.OrderBy(p => p.Id);
+            query = query.AsNoTracking().OrderBy(p => p.Id);
             return await query.ToArrayAsync();
         }
 
         public async Task<Produto[]> GetAllProdutosByDescriptionAsync(string descricao)
         {
-            IQueryable<Produto> query = _context.Produtos
+            IQueryable<Produto> query = _context.Produtos.AsNoTracking()
                 .Include(p => p.Categoria)
                 .Include(p => p.Fabricante)
                 .Include(p => p.Fornecedor);
 
-            query = query.OrderBy(p => p.Id)
+            query = query.AsNoTracking().OrderBy(p => p.Id)
                 .Where(p => p.Descricao.ToLower().Contains(descricao.ToLower()));
             return await query.ToArrayAsync();
         }

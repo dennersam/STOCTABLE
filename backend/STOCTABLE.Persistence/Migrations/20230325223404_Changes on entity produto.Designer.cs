@@ -12,8 +12,8 @@ using STOCTABLE.Persistence.Context;
 namespace STOCTABLE.Persistence.Migrations
 {
     [DbContext(typeof(StoctableContext))]
-    [Migration("20230313012350_Initial")]
-    partial class Initial
+    [Migration("20230325223404_Changes on entity produto")]
+    partial class Changesonentityproduto
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,28 @@ namespace STOCTABLE.Persistence.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("STOCTABLE.Domain.Models.Categoria", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Categorias");
+                });
 
             modelBuilder.Entity("STOCTABLE.Domain.Models.ClientePF", b =>
                 {
@@ -57,7 +79,7 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
 
-                    b.Property<DateTime>("DataCadastro")
+                    b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
@@ -72,10 +94,10 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("character varying(50)");
 
-                    b.Property<decimal>("LimiteCredito")
+                    b.Property<decimal?>("LimiteCredito")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime>("Nascimento")
+                    b.Property<DateTime?>("Nascimento")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Nome")
@@ -138,11 +160,10 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(20)");
 
                     b.Property<string>("Contato")
-                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<DateTime>("DataCadastro")
+                    b.Property<DateTime?>("DataCadastro")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
@@ -158,7 +179,6 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<string>("InscricaoEstadual")
-                        .IsRequired()
                         .HasMaxLength(9)
                         .HasColumnType("character varying(9)");
 
@@ -197,8 +217,10 @@ namespace STOCTABLE.Persistence.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nome")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
@@ -265,6 +287,9 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("character varying(300)");
 
+                    b.Property<int?>("ProdutoId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("RefBancarias")
                         .HasColumnType("text");
 
@@ -289,7 +314,7 @@ namespace STOCTABLE.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("Admissao")
+                    b.Property<DateTime?>("Admissao")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Bairro")
@@ -338,14 +363,13 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(300)");
 
                     b.Property<string>("Ocupacao")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("RG")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double>("Salario")
+                    b.Property<double?>("Salario")
                         .HasColumnType("double precision");
 
                     b.Property<string>("Telefone")
@@ -375,8 +399,8 @@ namespace STOCTABLE.Persistence.Migrations
                     b.Property<decimal?>("BaseCalcICMS")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Categoria")
-                        .HasColumnType("text");
+                    b.Property<int?>("CategoriaId")
+                        .HasColumnType("integer");
 
                     b.Property<decimal?>("CustoMedio")
                         .HasColumnType("numeric");
@@ -387,11 +411,9 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(300)");
 
                     b.Property<int?>("FabricanteId")
-                        .HasMaxLength(300)
                         .HasColumnType("integer");
 
                     b.Property<int?>("FornecedorId")
-                        .HasMaxLength(100)
                         .HasColumnType("integer");
 
                     b.Property<decimal?>("MargemLucro")
@@ -407,7 +429,7 @@ namespace STOCTABLE.Persistence.Migrations
                     b.Property<decimal?>("PesoLiquido")
                         .HasColumnType("numeric");
 
-                    b.Property<decimal>("PrecoCusto")
+                    b.Property<decimal?>("PrecoCusto")
                         .HasColumnType("numeric");
 
                     b.Property<decimal>("PrecoVenda")
@@ -416,14 +438,15 @@ namespace STOCTABLE.Persistence.Migrations
                     b.Property<int?>("QtMinima")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("Quantidade")
+                    b.Property<int>("Quantidade")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("Unidade")
-                        .HasMaxLength(50)
+                    b.Property<int>("Unidades")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CategoriaId");
 
                     b.HasIndex("FabricanteId");
 
@@ -449,7 +472,6 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(8)");
 
                     b.Property<string>("CNPJ")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Celular")
@@ -477,7 +499,6 @@ namespace STOCTABLE.Persistence.Migrations
                         .HasColumnType("character varying(50)");
 
                     b.Property<string>("InscricaoEstadual")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Nome")
@@ -508,17 +529,38 @@ namespace STOCTABLE.Persistence.Migrations
 
             modelBuilder.Entity("STOCTABLE.Domain.Models.Produto", b =>
                 {
+                    b.HasOne("STOCTABLE.Domain.Models.Categoria", "Categoria")
+                        .WithMany("Produtos")
+                        .HasForeignKey("CategoriaId");
+
                     b.HasOne("STOCTABLE.Domain.Models.Fabricante", "Fabricante")
-                        .WithMany()
+                        .WithMany("Produto")
                         .HasForeignKey("FabricanteId");
 
                     b.HasOne("STOCTABLE.Domain.Models.Fornecedor", "Fornecedor")
-                        .WithMany()
+                        .WithMany("Produtos")
                         .HasForeignKey("FornecedorId");
+
+                    b.Navigation("Categoria");
 
                     b.Navigation("Fabricante");
 
                     b.Navigation("Fornecedor");
+                });
+
+            modelBuilder.Entity("STOCTABLE.Domain.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
+                });
+
+            modelBuilder.Entity("STOCTABLE.Domain.Models.Fabricante", b =>
+                {
+                    b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("STOCTABLE.Domain.Models.Fornecedor", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 #pragma warning restore 612, 618
         }
