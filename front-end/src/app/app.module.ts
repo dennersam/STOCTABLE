@@ -9,13 +9,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SidemenuComponent } from './shared/layout/sidemenu/sidemenu.component';
 import { SideNavComponent } from './shared/layout/side-nav/side-nav.component';
+import { BodyComponent } from './shared/layout/body/body.component';
+import { HeaderComponent } from './shared/layout/header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SidemenuComponent,
-    SideNavComponent
+    SideNavComponent,
+    BodyComponent,
+    HeaderComponent
 
   ],
   imports: [

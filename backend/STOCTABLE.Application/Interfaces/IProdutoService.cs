@@ -1,21 +1,16 @@
-﻿using STOCTABLE.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using STOCTABLE.Application.DTOs;
 
 namespace STOCTABLE.Application.Interfaces
 {
     public interface IProdutoService
     {
-        Task<Produto> AddProduto(Produto produto);
-        Task<Produto> UpdateProduto(int id, Produto produto);
+        Task<ProdutoDTO> AddProduto(ProdutoDTO produto);
+        Task<ProdutoDTO> UpdateProduto(int id, ProdutoDTO produto);
         Task<bool> DeleteProduto(int id);
 
-        Task<Produto> GetProdutosByIdAsync(int id);
-        Task<Produto[]> GetAllProdutosAsync();
-        Task<Produto[]> GetAllProdutosByDescriptionAsync(string descricao);
+        Task<ProdutoDTO> GetProdutosByIdAsync(int id);
+        Task<ProdutoDTO[]> GetAllProdutosAsync();
+        Task<ProdutoDTO[]> GetAllProdutosByDescriptionAsync(string descricao);
 
     }
 }

@@ -6,10 +6,13 @@
 
 .card-status {
   margin-left: 40px;
-  max-width: 150px;
+  max-width: 200px;
   margin-bottom: 8px;
   background-color: #4527a0;
   color: white;
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
   //color: rgb(93, 45, 138);
 }
 

@@ -16,7 +16,7 @@ const httpOptions = {
 })
 export class ProdutoService {
 
-  private readonly URL: string = 'https://localhost:7191/api/Produtos';
+  private readonly URL: string = 'https://localhost:7098/api/Produtos';
 
   constructor(private httpClient: HttpClient) { }
 

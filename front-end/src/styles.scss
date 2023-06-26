@@ -16,9 +16,15 @@ $custom-theme: mat-light-theme(
 );
 
 @include angular-material-theme($custom-theme);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif;}
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;}
 
 .stoc-btn-green{
   background-color: rgb(104, 174, 0);
@@ -27,13 +33,13 @@ body { margin: 0; font-family: 'Roboto', sans-serif;}
 
 /* Largura da barra de rolagem */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
 }
 
 /* Fundo da barra de rolagem */
 ::-webkit-scrollbar-track-piece {
   background-color: rgb(255, 233, 255);
-  border-radius: 4px;
+  border-radius: 2px;
 
   //border-left: 1px solid #CCC
 }
@@ -41,12 +47,12 @@ body { margin: 0; font-family: 'Roboto', sans-serif;}
 /* Cor do indicador de rolagem */
 ::-webkit-scrollbar-thumb:vertical,
 ::-webkit-scrollbar-thumb:horizontal {
-  background-color: #4527a0;
-  border-radius: 4px;
+  background-color: #2d2055;
+  border-radius: 2px;
 }
 
 /* Cor do indicador de rolagem - ao passar o mouse */
 ::-webkit-scrollbar-thumb:vertical:hover,
 ::-webkit-scrollbar-thumb:horizontal:hover {
-  background-color: #820094
+  background-color: #5d0069
 }

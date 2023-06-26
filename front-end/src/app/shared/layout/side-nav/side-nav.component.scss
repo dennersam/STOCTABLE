@@ -2,7 +2,7 @@
   background: #231345;
   transition: all .5s ease;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   width: 5rem;
   height: 100vh;
@@ -16,14 +16,19 @@
 
     .logo{
       text-align: center;
-      width: 2.4rem;
-      min-width: 2.4rem;
-      border-radius: 0.313rem;
+      width: 3rem;
+      min-width: 3rem;
+      border-radius: 0.625rem;
       padding: 0.313rem;
       font-size: 24px;
       font-weight: 900;
       cursor: pointer;
       border: none;
+      transition: all .3s ease;
+    }
+
+    .logo:hover{
+      background-color: rgba(255, 255, 255);
     }
 
     .logo-text{
@@ -88,5 +93,14 @@
       background-color: rgba(255, 255, 255, 0.499);;
       //color: #231345;
     }
+  }
+}
+
+
+.active{
+  background-color: #ffffff29;
+  .sidenav-link-icon,
+  .sidenav-link-text{
+    color: #ffffff;
   }
 }

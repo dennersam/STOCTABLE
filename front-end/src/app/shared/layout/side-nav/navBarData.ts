@@ -8,6 +8,19 @@ export const navBarData = [
     routeLink: 'estoque',
     icon: '../../../../assets/img/svg/estoque_icon.svg',
     label: 'Estoque'
+  },
+  {
+    routeLink: 'cadastro',
+    icon: '../../../../assets/img/svg/estoque_icon.svg',
+    label: 'Cadastro',
+    items: [
+      {
+        routeLink: 'produto',
+        label: 'Produto'
+
+      }
+
+    ]
   }
 
 ]

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using STOCTABLE.Persistence.Context;
 using STOCTABLE.Domain.Models;
 using STOCTABLE.Application.Interfaces;
+using STOCTABLE.Application.DTOs;
 
 namespace STOCTABLE.Controllers
 {
@@ -26,8 +27,9 @@ namespace STOCTABLE.Controllers
             try
             {
                 var produtos = await _produtoService.GetAllProdutosAsync();
-                if (produtos == null) return NotFound("Nenhum produto encontrado.");
+                if (produtos == null) return NoContent();
 
+                var response = new List<ProdutoDTO>();
                 return Ok(produtos);
             }
             catch(Exception ex)
@@ -72,7 +74,7 @@ namespace STOCTABLE.Controllers
         // PUT: api/Produtos/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduto(int id, Produto model)
+        public async Task<IActionResult> PutProduto(int id, ProdutoDTO model)
         {
             try
             {
@@ -89,7 +91,7 @@ namespace STOCTABLE.Controllers
         // POST: api/Produtos
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> PostProduto(Produto model)
+        public async Task<IActionResult> PostProduto(ProdutoDTO model)
         {
             try
             {
@@ -112,7 +114,7 @@ namespace STOCTABLE.Controllers
             {
                 return await _produtoService.DeleteProduto(id) ? 
                     Ok("O Produto foi removido!") :
-                    BadRequest("Não foi possível remover o produto.");
+                    NoContent();
                 
             }
             catch (Exception ex)

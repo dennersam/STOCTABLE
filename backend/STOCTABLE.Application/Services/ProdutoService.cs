@@ -1,11 +1,8 @@
-﻿using STOCTABLE.Application.Interfaces;
+﻿using AutoMapper;
+using STOCTABLE.Application.DTOs;
+using STOCTABLE.Application.Interfaces;
 using STOCTABLE.Domain.Models;
 using STOCTABLE.Persistence.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace STOCTABLE.Application.Services
 {
@@ -13,21 +10,28 @@ namespace STOCTABLE.Application.Services
     {
         private readonly IGeneralPersistence _generalPersistence;
         private readonly IProdutoPersistence _produtoPersistence;
+        private readonly IMapper _mapper;
 
-        public ProdutoService(IGeneralPersistence generalPersistence, IProdutoPersistence produtoPersistence)
+        public ProdutoService(IGeneralPersistence generalPersistence, 
+                                IProdutoPersistence produtoPersistence,
+                                IMapper mapper)
         {
             _generalPersistence = generalPersistence;
             _produtoPersistence = produtoPersistence;
+            _mapper = mapper;
         }
 
-        public async Task<Produto> AddProduto(Produto model)
+        public async Task<ProdutoDTO> AddProduto(ProdutoDTO model)
         {
             try
             {
-                _generalPersistence.Add<Produto>(model);
+                var produto = _mapper.Map<Produto>(model);
+                _generalPersistence.Add<Produto>(produto);
                 if(await _generalPersistence.SaveChangesAsync())
                 {
-                    return await _produtoPersistence.GetProdutosByIdAsync(model.Id);
+                    var result = await _produtoPersistence.GetProdutosByIdAsync(produto.Id);
+
+                    return _mapper.Map<ProdutoDTO>(result);
                 }
                 return null;
             }
@@ -37,7 +41,7 @@ namespace STOCTABLE.Application.Services
             }
         }
 
-        public async Task<Produto> UpdateProduto(int id, Produto model)
+        public async Task<ProdutoDTO?> UpdateProduto(int id, ProdutoDTO model)
         {
             try
             {
@@ -45,10 +49,15 @@ namespace STOCTABLE.Application.Services
                 if (produto == null) return null;
                 model.Id = produto.Id;
 
-                _generalPersistence.Update(model);
+                _mapper.Map(model, produto);
+
+                _generalPersistence.Update<Produto>(produto);
+
                 if(await _generalPersistence.SaveChangesAsync())
                 {
-                    return await _produtoPersistence.GetProdutosByIdAsync(model.Id);
+                    var result =  await _produtoPersistence.GetProdutosByIdAsync(produto.Id);
+
+                    return _mapper.Map<ProdutoDTO>(result);
 
                 }
                 return null;
@@ -75,7 +84,7 @@ namespace STOCTABLE.Application.Services
             }
         }
 
-        public async Task<Produto[]> GetAllProdutosAsync()
+        public async Task<ProdutoDTO[]> GetAllProdutosAsync()
         {
             try
             {
@@ -83,14 +92,17 @@ namespace STOCTABLE.Application.Services
 
                 if(produtos == null) return null;
 
-                return produtos;
-            }catch(Exception ex)
+                var result = _mapper.Map<ProdutoDTO[]>(produtos);
+
+                return result;
+            }
+            catch(Exception ex)
             {
                 throw new Exception(ex.Message);
             }
         }
 
-        public async Task<Produto[]> GetAllProdutosByDescriptionAsync(string descricao)
+        public async Task<ProdutoDTO[]> GetAllProdutosByDescriptionAsync(string descricao)
         {
             try
             {
@@ -98,7 +110,9 @@ namespace STOCTABLE.Application.Services
 
                 if (produtos == null) return null;
 
-                return produtos;
+                var result = _mapper.Map<ProdutoDTO[]>(produtos);
+
+                return result;
             }
             catch (Exception ex)
             {
@@ -106,7 +120,7 @@ namespace STOCTABLE.Application.Services
             }
         }
 
-        public async Task<Produto> GetProdutosByIdAsync(int id)
+        public async Task<ProdutoDTO> GetProdutosByIdAsync(int id)
         {
             try
             {
@@ -114,7 +128,9 @@ namespace STOCTABLE.Application.Services
 
                 if (produto == null) return null;
 
-                return produto;
+                var result = _mapper.Map<ProdutoDTO>(produto);
+
+                return result;
             }
             catch (Exception ex)
             {

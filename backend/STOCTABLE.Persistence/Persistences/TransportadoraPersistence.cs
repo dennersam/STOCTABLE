@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STOCTABLE.Persistence
+namespace STOCTABLE.Persistence.Persistences
 {
     public class TransportadoraPersistence : ITransportadoraPersistence
     {
@@ -18,7 +18,7 @@ namespace STOCTABLE.Persistence
         {
             _context = context;
         }
-       
+
         public async Task<Transportadora> GetTransportadoraByIdAsync(int id)
         {
             IQueryable<Transportadora> query = _context.Transportadoras;
