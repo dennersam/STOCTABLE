@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STOCTABLE.Persistence
+namespace STOCTABLE.Persistence.Persistences
 {
     public class CategoriaPersistence : ICategoriaPersistence
     {

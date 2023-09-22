@@ -9,7 +9,7 @@ namespace STOCTABLE.Persistence.Interfaces
 {
     public interface IFabricantePersistence
     {
-        Task<Fabricante> GetFabricantesByIdAsync(int id);
+        Task<Fabricante> GetFabricanteByIdAsync(int id);
         Task<Fabricante[]> GetAllFabricantesAsync();
         Task<Fabricante[]> GetAllFabricantesByNameAsync(string nome);
     }

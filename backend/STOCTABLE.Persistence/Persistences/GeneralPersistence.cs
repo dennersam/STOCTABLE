@@ -1,14 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using STOCTABLE.Domain.Models;
-using STOCTABLE.Persistence.Context;
+﻿using STOCTABLE.Persistence.Context;
 using STOCTABLE.Persistence.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace STOCTABLE.Persistence
+namespace STOCTABLE.Persistence.Persistences
 {
     public class GeneralPersistence : IGeneralPersistence
     {
@@ -40,7 +33,7 @@ namespace STOCTABLE.Persistence
 
         public async Task<bool> SaveChangesAsync()
         {
-            return (await _context.SaveChangesAsync()) > 0;
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

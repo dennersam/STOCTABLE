@@ -1,11 +1,17 @@
+import { Categoria } from './categoria';
+import { Fornecedor } from './fornecedor';
+import { Fabricante } from './fabricante';
+import { Unidade } from '../enum/Unidade';
+
 export interface Produto {
   id: number;
-  codigo: number;
   descricao: string;
+  //unidade: Unidade[];
   unidade: string;
-  fornecedor: string;
-  fabricante: string;
-  setor: string;
+  //fornecedor: Fornecedor[];
+  fabricanteId: number;
+  fabricante: Fabricante;
+  //categoria: Categoria[];
   precoCusto: number;
   precoVenda: number;
   margemLucro: number;
@@ -17,6 +23,5 @@ export interface Produto {
   baseCalcICMS: number;
   pesoBruto: number;
   pesoLiquido: number;
-  codigoInterno: string;
 
 }

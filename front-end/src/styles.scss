@@ -2,23 +2,23 @@
 //@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
 
-@import '@angular/material/theming';
-@include mat-core();
+:root{
+  --primary: #231345;
+  --secondary: #562161;
+  --green: #44c13b;
+  --disabled: #cccccc;
+  --yellow: #fff700;
+}
 
-$custom-app-primary: mat-palette($mat-deep-purple, 800);
-$custom-app-secondary: mat-palette($mat-deep-purple, 700);
-$custom-app-warn: mat-palette($mat-red);
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-$custom-theme: mat-light-theme(
-  $custom-app-primary,
-  $custom-app-secondary,
-  $custom-app-warn
-);
-
-@include angular-material-theme($custom-theme);
-
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif;}
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;}
 
 .stoc-btn-green{
   background-color: rgb(104, 174, 0);
@@ -27,13 +27,13 @@ body { margin: 0; font-family: 'Roboto', sans-serif;}
 
 /* Largura da barra de rolagem */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
 }
 
 /* Fundo da barra de rolagem */
 ::-webkit-scrollbar-track-piece {
   background-color: rgb(255, 233, 255);
-  border-radius: 4px;
+  border-radius: 2px;
 
   //border-left: 1px solid #CCC
 }
@@ -41,12 +41,62 @@ body { margin: 0; font-family: 'Roboto', sans-serif;}
 /* Cor do indicador de rolagem */
 ::-webkit-scrollbar-thumb:vertical,
 ::-webkit-scrollbar-thumb:horizontal {
-  background-color: #4527a0;
-  border-radius: 4px;
+  background-color: #2d2055;
+  border-radius: 2px;
 }
 
 /* Cor do indicador de rolagem - ao passar o mouse */
 ::-webkit-scrollbar-thumb:vertical:hover,
 ::-webkit-scrollbar-thumb:horizontal:hover {
-  background-color: #820094
+  background-color: #5d0069
 }
+
+.card{
+  display: flexbox;
+  border-radius: 0.625rem;
+  border: 1px solid var(--primary);
+  min-width: 15rem;
+  min-height: 6rem;
+  text-align: center;
+  box-shadow: 0.063rem 0 0.25rem 0 var(--primary);
+  background: var(--primary);
+  padding: 0.725rem;
+  margin: 0.625rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  background: var(--secondary);
+}
+
+/* Checkbox Personalization - Start */
+
+.checkbox {
+  appearance: none;
+}
+
+.checkbox {
+  cursor: pointer;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  width: 1.2rem;
+  height: 1.2rem;
+  appearance: none;
+  border: 2px solid var(--primary);
+  border-radius: 0.225rem;
+}
+
+.checkbox:checked {
+  background-color: var(--primary);
+}
+
+// .checkbox:focus {
+//   border-color: var(--disabled);
+// }
+
+.checkbox:disabled {
+  background-color: rgb(198, 198, 198);
+  background-image: none;
+}
+
+/* Checkbox Personalization - The end */

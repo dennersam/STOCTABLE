@@ -7,7 +7,8 @@
         Caixa,
         Kilo,
         Litros,
-        Duzia
+        Duzia,
+        Par
 
     }
 }

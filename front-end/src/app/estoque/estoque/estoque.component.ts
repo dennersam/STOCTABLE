@@ -1,6 +1,6 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -14,14 +14,12 @@ import { ProdutoService } from '../services/produto.service';
   styleUrls: ['./estoque.component.scss'],
 })
 export class EstoqueComponent implements OnInit {
+  @Input() closeDialog() {
+    this.dialog.closeAll();
+  }
+
   produtos: Produto[] = [];
-  displayedColumns = [
-    'select',
-    'descricao',
-    'quantidade',
-    'preco',
-    'fabricante',
-  ];
+
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<Produto>(true, []);
   pesquisa!: FormGroup;
@@ -91,10 +89,6 @@ export class EstoqueComponent implements OnInit {
       height: '90%',
       width: '80%',
     });
-  }
-
-  @Output() closeDialog(){
-    this.dialog.closeAll();
   }
 
   delProduto(): void {}

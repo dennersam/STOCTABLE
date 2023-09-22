@@ -8,33 +8,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace STOCTABLE.Persistence
+namespace STOCTABLE.Persistence.Persistences
 {
-    public class ClientePFPersistence : IClientePFPersistence
+    public class ClientePJPersistence : IClientePJPersistence
     {
         public StoctableContext _context { get; }
 
-        public ClientePFPersistence(StoctableContext context)
+        public ClientePJPersistence(StoctableContext context)
         {
             _context = context;
         }
 
-        public async Task<ClientePF> GetClientesPFByIdAsync(int id)
+        public async Task<ClientePJ> GetClientesPJByIdAsync(int id)
         {
-            IQueryable<ClientePF> query = _context.ClientePFs;
+            IQueryable<ClientePJ> query = _context.ClientePJs;
 
-            query = query.OrderBy(c => c.Id).Where(c => c.Id == id);
+            query = query.OrderBy(c => c.Id)
+                .Where(c => c.Id == id);
             return await query.FirstOrDefaultAsync();
         }
-        public async Task<ClientePF[]> GetAllClientesPFAsync()
+        public async Task<ClientePJ[]> GetAllClientesPJAsync()
         {
-            IQueryable<ClientePF> query = _context.ClientePFs;
+            IQueryable<ClientePJ> query = _context.ClientePJs;
             query = query.OrderBy(c => c.Id);
             return await query.ToArrayAsync();
         }
-        public async Task<ClientePF[]> GetAllClientesPFByNameAsync(string nome)
+        public async Task<ClientePJ[]> GetAllClientesPJByNameAsync(string nome)
         {
-            IQueryable<ClientePF> query = _context.ClientePFs;
+            IQueryable<ClientePJ> query = _context.ClientePJs;
 
             query = query.OrderBy(c => c.Id)
                 .Where(c => c.Nome.ToLower().Contains(nome));

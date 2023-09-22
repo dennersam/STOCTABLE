@@ -1,28 +1,63 @@
 .title-produtos{
   margin: 20px;
   font-weight: bolder;
-  color: rgb(93, 45, 138);
+  color: var(--secondary);
+}
+
+.table-actions{
+  border: #231345 solid 3px;
+  height: 3rem;
+  border-radius: 0.625rem;
+  margin-bottom: 0.125rem;
 }
 
 table{
   width: 100%;
+  height: 60px;
+  border: 3px solid  #231345;
+  border-radius: 0.625rem;
+  //border-collapse: collapse;
+
+}
+
+th{
+  color: white;
+  font-size: 1rem;
+}
+
+.border-radius-left{
+  background-color: var(--primary);
+  border-radius: 0.625rem 0 0 0;
+}
+
+.border-radius-right{
+  background-color: var(--primary);
+  border-radius: 0 0.625rem 0 0;
+}
+
+.thead-style{
+  background-color: var(--primary);
+}
+
+tr{
+  height: 2.625rem;
+
+}
+
+td{
+  text-align: center;
+  min-width: 2rem;
+}
+
+tr:nth-child(even) {
+  background-color: #dccdff;
+}
+
+td:first-of-type {
+    border-right-color: transparent;
 }
 
 .produto-container{
   width: 95%;
   margin-left: 3%;
-}
-
-.head-btns{
-
-}
-
-.ml-10{
-  margin-left: 10px;
-}
-
-mat-form-field.mat-form-field {
-  font-size: 12px;
-  margin: 20px 20px 0px 10px;
-
 }

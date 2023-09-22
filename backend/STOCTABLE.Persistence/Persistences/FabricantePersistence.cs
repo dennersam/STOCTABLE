@@ -2,13 +2,8 @@
 using STOCTABLE.Domain.Models;
 using STOCTABLE.Persistence.Context;
 using STOCTABLE.Persistence.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace STOCTABLE.Persistence
+namespace STOCTABLE.Persistence.Persistences
 {
     public class FabricantePersistence : IFabricantePersistence
     {
@@ -19,7 +14,7 @@ namespace STOCTABLE.Persistence
             _context = context;
         }
 
-        public async Task<Fabricante> GetFabricantesByIdAsync(int id)
+        public async Task<Fabricante> GetFabricanteByIdAsync(int id)
         {
             IQueryable<Fabricante> query = _context.Fabricantes;
 
