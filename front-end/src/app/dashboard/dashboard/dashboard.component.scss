@@ -1,14 +1,14 @@
 .title-dashboard{
   margin: 20px;
   font-weight: bolder;
-  color: rgb(93, 45, 138);
+  color: var(--secondary);
 }
 
 .card-status {
   margin-left: 40px;
   max-width: 200px;
   margin-bottom: 8px;
-  background-color: #4527a0;
+  background-color: var(--primary);
   color: white;
   margin: 1rem;
   display: flex;
@@ -16,7 +16,21 @@
   //color: rgb(93, 45, 138);
 }
 
+.card h1{
+  color: aliceblue;
+}
+
+.card h3{
+  color: var(--green);
+}
+
 .dash-topo{
   display: flex;
   flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .dash-topo {
+    flex-direction: column;
+  }
 }

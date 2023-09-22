@@ -1,6 +1,7 @@
 import { Produto } from "./produto";
+import { Pessoa } from "./pessoa";
 
-export interface Fabricante {
+export interface Fabricante extends Pessoa {
   id: number;
   rg: string;
   ocupacao?: string;

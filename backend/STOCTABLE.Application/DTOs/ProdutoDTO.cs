@@ -1,4 +1,5 @@
 ﻿using STOCTABLE.Domain.Enums;
+using STOCTABLE.Domain.Models;
 
 namespace STOCTABLE.Application.DTOs
 {
@@ -7,6 +8,8 @@ namespace STOCTABLE.Application.DTOs
         public int Id { get; set; }
         public string Descricao { get; set; }
         public virtual Unidade Unidades { get; set; }
+        public int FabricanteId {get; set; }
+        public virtual Fabricante? Fabricante { get; set; }
         public decimal? PrecoCusto { get; set; }
         public decimal PrecoVenda { get; set; }
         public decimal? MargemLucro { get; set; }

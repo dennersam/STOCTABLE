@@ -9,7 +9,7 @@
   top: 0;
 
   .head-content{
-    background-color: rgb(86, 33, 97);
+    background-color: #562161;
     border-radius: 0.625rem;
     box-shadow: 0 0 10px 0 rgb(34 41 47 / 10%);
     padding: 0.813rem 1.563rem;
@@ -22,6 +22,12 @@
       font-size: 18px;
 
     }
+
+    .vertical-align{
+      vertical-align: middle;
+      display: table-cell;
+    }
+
     .head-content-right{
       display: flex;
       align-items: center;
