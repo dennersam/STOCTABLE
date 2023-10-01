@@ -12,6 +12,9 @@ import { HeaderComponent } from './shared/layout/header/header.component';
 
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { LoginComponent } from './usuario/login/login.component';
+import { RecuperarSenhaComponent } from './usuario/recuperar-senha/recuperar-senha.component';
 
 registerLocaleData(ptBr);
 
@@ -20,8 +23,10 @@ registerLocaleData(ptBr);
     AppComponent,
     SideNavComponent,
     BodyComponent,
-    HeaderComponent
-
+    HeaderComponent,
+    UsuarioComponent,
+    LoginComponent,
+    RecuperarSenhaComponent
   ],
   imports: [
     AppRoutingModule,
