@@ -1,1 +1,24 @@
-<p>login works!</p>
+<div class="login-page">
+  <div class="login-card">
+    <div class="logo-login-container">
+      <img src="../../../assets/img/svg/LOGO_LOGIN.svg" class="logo-login">
+      <div class="logo-login-text">STOCTABLE</div>
+    </div>
+
+    <div class="login-form">
+      <h1>LOGIN</h1>
+
+      <form [formGroup]="formLogin">
+        <div class="form-group">
+          <input type="text" placeholder="Usuario" class="form-control" name="login" id="login" required>
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Senha" class="form-control" name="senha" id="senha" required>
+        </div>
+      </form>
+      <button>Entrar</button>
+    </div>
+
+  </div>
+
+</div>
