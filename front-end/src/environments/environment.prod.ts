@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiURL: 'https://localhost:7098/'
+  apiURL: 'https://app-stoctable-backend-dev01.azurewebsites.net/'
 };

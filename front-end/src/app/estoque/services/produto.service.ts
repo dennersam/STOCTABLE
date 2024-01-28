@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Produto } from './../model/produto';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +16,7 @@ const httpOptions = {
 })
 export class ProdutoService {
 
-  private readonly URL: string = 'https://localhost:7098/api/Produto';
+  private readonly URL: string = environment.apiURL + 'api/Produto';
 
   //private tokenHeader = new HttpHeaders({'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user') || '{}').token}`});
 
