@@ -3,19 +3,25 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { RecuperarSenhaComponent } from './recuperar-senha/recuperar-senha.component';
 import { UsuarioRoutingModule } from './usuario-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ComponentsModule } from '../shared/components/components.module';
+import { RegistroComponent } from './registro/registro.component';
+import { AuthLayoutComponent } from '../shared/layout/auth-layout/auth-layout.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RecuperarSenhaComponent
+    RecuperarSenhaComponent,
+    RegistroComponent,
+    AuthLayoutComponent
   ],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ComponentsModule,
+    FormsModule
   ]
 })
 export class UsuarioModule { }

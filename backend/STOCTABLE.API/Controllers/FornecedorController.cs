@@ -2,9 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using STOCTABLE.Persistence.Context;
 using STOCTABLE.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace STOCTABLE.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FornecedorController : ControllerBase

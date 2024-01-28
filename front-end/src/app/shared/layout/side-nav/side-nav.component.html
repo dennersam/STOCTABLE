@@ -1,4 +1,4 @@
-<div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
+<div class="sidenav" *ngIf="mostrarMenu" [ngClass]="collapsed ? 'sidenav-collapsed' : ''">
   <div class="logo-container">
     <img src="../../../../assets/img/svg/LOGO.svg" (click)="toggleCollapse()" class="logo">
     <div class="logo-text" @fadeInOut *ngIf="collapsed">STOCTABLE</div>

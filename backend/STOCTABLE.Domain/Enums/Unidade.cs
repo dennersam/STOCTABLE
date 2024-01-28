@@ -5,10 +5,11 @@
         Unidade,
         Peça,
         Caixa,
-        Kilo,
+        Quilo,
         Litros,
         Duzia,
-        Par
+        Par,
+        Pacote
 
     }
 }

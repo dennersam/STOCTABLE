@@ -2,7 +2,9 @@ export enum Unidade {
   Unidade,
   Peça,
   Caixa,
-  Kilo,
+  Quilo,
   Litros,
   Duzia,
+  Par,
+  Pacote
 }

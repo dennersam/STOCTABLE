@@ -1,11 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using STOCTABLE.Domain.Enums;
+using STOCTABLE.Domain.Identity;
 using STOCTABLE.Domain.Models;
 
 namespace STOCTABLE.Persistence.Context
 {
-    public class StoctableContext : DbContext
+    public class StoctableContext : IdentityDbContext<User, Role, int,
+                                                        IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>,
+                                                        IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public StoctableContext(DbContextOptions<StoctableContext> options)
             : base(options)
@@ -23,9 +28,29 @@ namespace STOCTABLE.Persistence.Context
 
         public void Configuration(EntityTypeBuilder<Produto> builder)
         {
-            builder.Property(u => u.Unidades).HasConversion(
+            builder.Property(u => u.Unidade).HasConversion(
                 u => u.ToString(),
                 u => (Unidade)Enum.Parse(typeof(Unidade), u));
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+
+            builder.Entity<UserRole>( userRole =>
+            {
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                userRole.HasOne(ur => ur.Role)
+                            .WithMany(r => r.UserRoles)
+                            .HasForeignKey(ur => ur.RoleId)
+                            .IsRequired();
+
+                userRole.HasOne(ur => ur.User)
+                            .WithMany(r => r.UserRoles)
+                            .HasForeignKey(ur => ur.UserId)
+                            .IsRequired();
+            });
         }
 
     }

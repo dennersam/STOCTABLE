@@ -1,24 +1,26 @@
-<div class="login-page">
-  <div class="login-card">
-    <div class="logo-login-container">
-      <img src="../../../assets/img/svg/LOGO_LOGIN.svg" class="logo-login">
-      <div class="logo-login-text">STOCTABLE</div>
+<div class="logo-login-container">
+  <img src="../../../assets/img/svg/LOGO_LOGIN.svg" class="logo-login">
+  <div class="logo-login-text">STOCTABLE</div>
+</div>
+
+<div class="login-form">
+  <h1>LOGIN</h1>
+
+  <form [formGroup]="authForm" (onSubmit)="userLogin()">
+    <div class="form-group">
+      <st-input [classeCSS]="'tx-center'" [type]="'text'" [placeholder]="'Usuário'" formControlName="userName" id="'userName'" [hasLabel]="false"></st-input>
+     <!-- <input formControlName="userName" type="text" placeholder="Usuario" class="form-control" name="userName" id="userName"
+        required> -->
     </div>
-
-    <div class="login-form">
-      <h1>LOGIN</h1>
-
-      <form [formGroup]="formLogin">
-        <div class="form-group">
-          <input type="text" placeholder="Usuario" class="form-control" name="login" id="login" required>
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Senha" class="form-control" name="senha" id="senha" required>
-        </div>
-      </form>
-      <button>Entrar</button>
+    <div class="form-group">
+      <st-input [classeCSS]="'tx-center'" [type]="'password'" [placeholder]="'Senha'" formControlName="password"  [id]="'password'"  [hasLabel]="false"></st-input>
+      <!-- <input formControlName="password" type="password" placeholder="Senha" class="form-control" name="password" id="password"
+        required> -->
     </div>
-
-  </div>
+  </form>
+  <st-botao [estilo]="'btn-green'" (click)="userLogin()">Entrar</st-botao>
+  <st-botao [estilo]="'btn-primary'" (click)="registro()">Registrar-se</st-botao>
+  <st-botao [estilo]="'btn-red'">Login com Google<img src="../../../assets/img/jpg/LOGO GOOGLE.jpg" /></st-botao>
+  <a href="usuario/recuperar-senha">Esqueci a senha</a>
 
 </div>

@@ -5,9 +5,11 @@ using STOCTABLE.Persistence.Context;
 using STOCTABLE.Domain.Models;
 using STOCTABLE.Application.Interfaces;
 using STOCTABLE.Application.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace STOCTABLE.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ProdutoController : ControllerBase
@@ -71,8 +73,6 @@ namespace STOCTABLE.Controllers
             }
         }
 
-        // PUT: api/Produtos/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduto(int id, ProdutoDTO model)
         {
@@ -88,8 +88,7 @@ namespace STOCTABLE.Controllers
             }
         }
 
-        // POST: api/Produtos
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<IActionResult> PostProduto(ProdutoDTO model)
         {
@@ -106,7 +105,6 @@ namespace STOCTABLE.Controllers
 
         }
 
-        // DELETE: api/Produtos/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduto(int id)
         {

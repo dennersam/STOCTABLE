@@ -7,17 +7,15 @@ namespace STOCTABLE.Domain.Models
     public class Produto
     {
         public int Id { get; set; }
-        [MaxLength(300)]
-        [Required]
         public string Descricao { get; set; }
-        public virtual Unidade Unidades { get; set; }
+        public virtual Unidade Unidade { get; set; }
         public decimal? PrecoCusto { get; set; }
         public decimal PrecoVenda { get; set; }
         public decimal? MargemLucro { get; set; }
         public decimal? CustoMedio { get; set; }
         public int Quantidade { get; set; }
         public int? QtMinima { get; set; } = 1;
-        [MaxLength(1000)]
+        public string? Foto { get; set; }
         public string? Observacao { get; set; }
         public decimal? AlicotaICMS { get; set; }
         public decimal? BaseCalcICMS { get; set; }

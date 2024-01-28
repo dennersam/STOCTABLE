@@ -11,8 +11,6 @@ namespace STOCTABLE.Domain.Models
         public IEnumerable<Produto> Produto { get; set; }
         public double ValorTotal { get; set; }
         public TipoPagamento TipoPagamento { get; set;}
-        public int UsuarioId { get; set; }
-        public Usuario Usuario { get; set;}
 
     }
 }

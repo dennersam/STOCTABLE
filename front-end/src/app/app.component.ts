@@ -1,3 +1,4 @@
+import { ContaService } from 'src/app/usuario/services/conta.service';
 import { Component } from '@angular/core';
 
 
@@ -16,6 +17,12 @@ export class AppComponent {
 
   isSideNavCollapsed = false;
   screenWidth = 0;
+
+  currentUser?: string;
+
+  constructor(private contaService: ContaService){
+    this.currentUser = localStorage.getItem('user')?.toString();
+  }
 
   onToggleSideNav(data: SideNavToggle):void{
     this.screenWidth = data.screenWidth;

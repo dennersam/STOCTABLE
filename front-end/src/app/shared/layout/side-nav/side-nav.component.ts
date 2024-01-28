@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 import { navBarData } from './navBarData';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { ContaService } from 'src/app/usuario/services/conta.service';
 
 interface SideNavToggle{
   screenWidth: number;
@@ -36,6 +37,10 @@ export class SideNavComponent implements OnInit {
   screenWidth = 0;
   navData = navBarData;
 
+  mostrarMenu: boolean = false;
+
+  constructor(private contaService: ContaService){}
+
   @HostListener('window:resize',['$event'])
   onResize(event: any){
     this.screenWidth = window.innerWidth;
@@ -48,6 +53,9 @@ export class SideNavComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;
+    this.contaService.mostrarMenuEmitter.subscribe(
+      mostrar => this.mostrarMenu = mostrar
+    );
   }
 
   toggleCollapse(): void{

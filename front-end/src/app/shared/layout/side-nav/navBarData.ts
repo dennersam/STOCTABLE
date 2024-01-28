@@ -15,12 +15,22 @@ export const navBarData = [
     label: 'Cadastro',
     items: [
       {
-        routeLink: 'produto',
+        routeLink: 'cadastro/produto',
         label: 'Produto'
 
+      },
+      {
+        routeLink: 'cadastro/fornecedor',
+        label: 'Fornecedor'
+      },
+      {
+        routeLink: 'cadastro/cliente',
+        label: 'Cliente'
+      },
+      {
+        routeLink: 'cadastro/transportadora',
+        label: 'Transportadora'
       }
-
     ]
   }
-
 ]

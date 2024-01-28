@@ -8,7 +8,6 @@ const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type' : 'application/json'
   })
-
 }
 
 @Injectable({
@@ -17,6 +16,8 @@ const httpOptions = {
 export class ProdutoService {
 
   private readonly URL: string = 'https://localhost:7098/api/Produto';
+
+  //private tokenHeader = new HttpHeaders({'Authorization': `Bearer ${JSON.parse(localStorage.getItem('user') || '{}').token}`});
 
   constructor(private httpClient: HttpClient) { }
 
@@ -30,7 +31,7 @@ export class ProdutoService {
   }
 
   salvarProduto(produto: Produto): Observable<Produto>{
-    return this.httpClient.post<Produto>(this.URL, produto, httpOptions)
+    return this.httpClient.post<Produto>(this.URL, produto)
   }
 
   apagarProduto(id: number): Observable<any>{

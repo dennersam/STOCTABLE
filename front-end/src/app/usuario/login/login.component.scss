@@ -11,13 +11,10 @@
 
 .login-card {
   width: 40rem;
-  height: 50vh;
+  height: auto;
   background: #6D0070;
   border-radius: 0.5rem;
-  //display: flex;
-  //justify-content: center;
-  //align-items: center;
-  padding: 9rem;
+  padding: 4.5rem;
 
 }
 
@@ -43,24 +40,24 @@
 .login-form{
   display: grid;
   justify-content: center;
-  margin: 1rem 0 1rem 0;
+  margin: 2rem 0 0 0;
+  text-align: center;
 
+}
+
+.login-form a{
+  color: white;
+  text-decoration: none;
+  margin: 1rem 0 0 0 ;
+}
+
+.login-form img{
+  padding: 0 0 0 10px;
 }
 
 .login-form h1{
   text-align: center;
   color: white;
   font-weight: 500;
-}
-
-.login-form input{
-  text-align: center;
-  margin: 0.4rem 0 0.4rem 0;
-  border-radius: 0.3rem;
-  border: none;
-  padding: 0.4rem;
-}
-
-.logo-login{
-
+  margin: 0 0 1rem 0;
 }

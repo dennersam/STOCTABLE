@@ -6,8 +6,8 @@ import { Unidade } from '../enum/Unidade';
 export interface Produto {
   id: number;
   descricao: string;
-  //unidade: Unidade[];
-  unidade: string;
+  unidade: Unidade[];
+  //unidade: string;
   //fornecedor: Fornecedor[];
   fabricanteId: number;
   fabricante: Fabricante;

@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 //@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap');
+@import '~@angular/cdk/overlay-prebuilt.css';
 
 :root{
   --primary: #231345;
@@ -8,6 +9,7 @@
   --green: #44c13b;
   --disabled: #cccccc;
   --yellow: #fff700;
+  --red: #B60000;
 }
 
 *{
@@ -18,11 +20,7 @@
 
 body {
   position: relative;
-  font-family: 'Roboto', sans-serif;}
-
-.stoc-btn-green{
-  background-color: rgb(104, 174, 0);
-  color: white;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Largura da barra de rolagem */

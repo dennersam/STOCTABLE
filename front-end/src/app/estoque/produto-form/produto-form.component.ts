@@ -1,6 +1,7 @@
+import { Fabricante } from './../model/fabricante';
+import { FabricanteService } from './../services/fabricante.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { EstoqueComponent } from '../estoque/estoque.component';
 
 import { ProdutoService } from '../services/produto.service';
 import { Produto } from './../model/produto';
@@ -12,18 +13,21 @@ import { Produto } from './../model/produto';
 })
 export class ProdutoFormComponent implements OnInit {
   produtoForm!: FormGroup;
+  unidades = ["Unidade", "Peça", "Caixa", "Quilo", "Litros", "Duzia", "Par", "Pacote"];
+  selectedValue: any;
+  fabricantes?: Fabricante[];
 
   constructor(
     private fb: FormBuilder,
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private fabricanteServices: FabricanteService
   ) {}
 
   ngOnInit(): void {
     this.produtoForm = this.fb.group({
       descricao: [null, Validators.required],
       fabricante: [null],
-      unidade: [null],
-      setor: [null],
+      unidade: [this.unidades],
       fornecedor: [null],
       precoCusto: [null],
       precoVenda: [null],
@@ -31,7 +35,7 @@ export class ProdutoFormComponent implements OnInit {
       margemLucro: [null],
       quantidade: [null, Validators.required],
       qtMinima: [null, Validators.required],
-      AlicotaICMS: [null],
+      alicotaICMS: [null],
       baseCalcICMS: [null],
       pesoBruto: [null],
       pesoLiquido: [null],
@@ -42,9 +46,7 @@ export class ProdutoFormComponent implements OnInit {
 
   adicionarProduto() {
     const produto: Produto = this.produtoForm.value;
-
     console.log(produto);
-
     this.produtoService.salvarProduto(produto).subscribe((result) => {
       alert('Produto cadastrado!');
     });
@@ -52,7 +54,20 @@ export class ProdutoFormComponent implements OnInit {
 
   removerProduto() {}
 
-  public fecharDialogo(){
+  fecharDialogo(){
 
+  }
+
+  listegemDeFabricante(): any{
+    //this.fabricanteServices.listarFabricantes();
+    console.log(this.fabricanteServices.listarFabricantes());
+    //.subscribe((fabricante: Fabricante[]) => (this.fabricantes = fabricante));
+
+  }
+
+  onOptionSelected(option: any) {
+    console.log('Opção selecionada:', option);
+    // Faça aqui o que desejar com a opção selecionada
+    this.selectedValue = option;
   }
 }

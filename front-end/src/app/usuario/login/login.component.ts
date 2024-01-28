@@ -1,6 +1,9 @@
+import { ContaService } from './../services/conta.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { Usuario } from '../models/Usuario';
+import { Router } from '@angular/router';
+import { UsuarioLogin } from '../models/UsuarioLogin';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +12,42 @@ import { Usuario } from '../models/Usuario';
 })
 export class LoginComponent implements OnInit {
 
-  public formLogin!: FormGroup;
+  public authForm!: FormGroup;
+  public usuarioLogin?: UsuarioLogin;
 
-  constructor(private fb: FormBuilder) { }
+
+  constructor(private fb: FormBuilder,
+              private contaService: ContaService,
+              private router: Router,
+              private toastr: ToastrService
+              ) { }
 
   ngOnInit(): void {
-    this.formLogin = this.fb.group({
-      login: ['',[Validators.required]],
-      senha: ['', [Validators.required]]
+    this.authForm = this.fb.group({
+      userName: ['',[Validators.required]],
+      password: ['', [Validators.required]]
     })
   }
 
-  loginForm(usuario: Usuario){
-    this.formLogin = new FormGroup({
-      login: new FormControl(usuario.login),
-      senha: new FormControl(usuario.senha)
-    })
+  userLogin(): void {
+    this.usuarioLogin = this.authForm.value;
+    this.contaService.login(this.authForm.value).subscribe(
+      () => { this.router.navigateByUrl('dashboard');},
+      (error: any) => {
+        if(error.status == 401) {
+          this.toastr.error('Usuário ou senha inválidos!', 'Erro!', {positionClass : 'toast-top-center' });
+
+        } else if(error.status == 500){
+          this.toastr.error('Houve um erro ao tentar entrar, tente novamente mais tarde! ', 'Erro interno');
+        } else {
+          this.toastr.success('Usuario logado com sucesso', 'Login OK!')
+        }
+      }
+    )
+  }
+
+  registro(){
+    this.router.navigate((['usuario/registro']));
   }
 
 }

@@ -1,0 +1,21 @@
+<div class="form-group stoc-input" [ngClass]="classeCSS">
+  <label [attr.for]="id" class="control-label" *ngIf="hasLabel">
+    <p>{{ label }}</p>
+  </label>
+  <input *ngIf="type === 'text' || type === 'number' || type === 'password'" [type]="type" class="form-control" [ngClass]="classeCSS" [id]="id" [readonly]="!!isReadOnly"
+    [(ngModel)]="value" [placeholder]="placeholder">
+  <textarea *ngIf="type === 'textarea'" class="form-control " [id]="id" [readonly]="!!isReadOnly"
+    [(ngModel)]="value" [placeholder]="placeholder"></textarea>
+  <!-- <select *ngIf="type === 'select'">
+    <option
+      *ngFor="let item in option"
+      [value]="item"
+      [selected]="item === value">{{ item }}
+    </option>
+  </select> -->
+
+  <select *ngIf="type === 'select'" [ngModel]="selectedOption" (ngModelChange)="onOptionSelected($event)">
+    <option *ngFor="let option of options" [ngValue]="option">{{ option }}</option>
+  </select>
+
+</div>

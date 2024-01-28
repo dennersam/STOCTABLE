@@ -1,5 +1,8 @@
 export class Usuario {
-  login?: string;
-  senha?: string;
-  nome?: string;
+  userName?: string;
+  password?: string;
+  primeiroNome?: string;
+  segundoNome?: string;
+  email?: string;
+  token?: string;
 }

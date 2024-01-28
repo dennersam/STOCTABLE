@@ -1,0 +1,24 @@
+button{
+  margin: 8px;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-primary{
+  background-color:  var(--primary);
+}
+
+.btn-secondary{
+  background-color: var(--secondary);
+}
+
+.btn-green{
+  background-color: var(--green);
+}
+
+.btn-red{
+  background-color: var(--red);
+}
