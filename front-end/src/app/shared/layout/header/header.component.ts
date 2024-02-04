@@ -12,8 +12,7 @@ export class HeaderComponent implements OnInit {
 
   @Input() collapsed = false;
   @Input() screenWidth = 0;
-  userName = JSON.parse(localStorage.getItem('user') ?? "");
-
+  userName:any;
   mostrarMenu: boolean = false;
 
   constructor(private contaService: ContaService) { }
@@ -23,7 +22,11 @@ export class HeaderComponent implements OnInit {
      mostrar => this.mostrarMenu = mostrar
     );
 
-
+    if(localStorage.getItem('user') != null){
+      this.userName = JSON.parse(localStorage.getItem('user') ?? "");
+    }else{
+      this.userName = { "primeiroNome": "User" }
+    }
   }
   getHeadClass(): string{
     let styleClass = '';
